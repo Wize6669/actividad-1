@@ -1,11 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router';
-import { User, ShoppingCart } from 'lucide-react';
+import { type FormEvent, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { User, ShoppingCart, Search } from 'lucide-react';
 import { userStoreClient } from "../../stores/userStore.ts";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
     const userStore = userStoreClient((state) => state);
+    const navigate = useNavigate();
+
+    const handleSearch = (e: FormEvent) => {
+        e.preventDefault();
+        navigate(`/books?search=${searchTerm}`);
+    };
 
     return (
         <header className="bg-white shadow-md">
@@ -39,6 +46,19 @@ export default function Header() {
                 </nav>
 
                 <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <form onSubmit={handleSearch} className="hidden sm:flex items-center border rounded-md px-2 py-1">
+                        <input
+                            type="text"
+                            placeholder="Buscar libros..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="outline-none text-sm w-40"
+                        />
+                        <button type="submit">
+                            <Search className="w-4 h-4 text-gray-500"/>
+                        </button>
+                    </form>
+
                     {userStore.user.isLogin ? (
                         <span className="hidden sm:inline">
                             Bienvenido, <span className="font-medium text-blue-600">
@@ -51,11 +71,28 @@ export default function Header() {
                             <span className="hidden sm:inline">Iniciar sesión</span>
                         </Link>
                     )}
+
                     <Link to="/cart" className="text-gray-600 hover:text-blue-600">
                         <ShoppingCart className="w-5 h-5"/>
                     </Link>
                 </div>
             </div>
+
+            {/* Search mobile */}
+            <form onSubmit={handleSearch} className="sm:hidden px-4 py-2">
+                <div className="flex items-center border rounded-md px-2 py-1">
+                    <input
+                        type="text"
+                        placeholder="Buscar libros..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="outline-none text-sm w-full"
+                    />
+                    <button type="submit">
+                        <Search className="w-4 h-4 text-gray-500"/>
+                    </button>
+                </div>
+            </form>
         </header>
     );
 }
