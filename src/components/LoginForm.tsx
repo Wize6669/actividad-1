@@ -2,7 +2,8 @@ import { type ChangeEvent, type FormEvent, useState } from 'react';
 import type { User, UserSignInClient } from '../models/User.ts';
 import { usersTable } from '../db.ts';
 import { Link, useNavigate } from 'react-router';
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcryptjs';
+import { userStoreClient } from '../stores/userStore.ts';
 
 export default function LoginForm() {
     const [user, setUser] = useState<UserSignInClient>({
@@ -12,6 +13,7 @@ export default function LoginForm() {
     });
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
+    const userStore = userStoreClient((state) => state);
 
     const handleGetDataInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -30,7 +32,8 @@ export default function LoginForm() {
         );
 
         if (matchedUser && bcrypt.compareSync(user.password, matchedUser.password)) {
-            navigate('/dashboard');
+            userStore.login({ ...matchedUser, isLogin: true });
+            navigate('/');
         } else {
             console.log(matchedUser && bcrypt.compareSync(user.password, matchedUser.password))
             alert('Correo o contraseña incorrectos');

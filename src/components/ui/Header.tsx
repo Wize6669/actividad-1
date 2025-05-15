@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { User, ShoppingCart } from 'lucide-react';
+import { userStoreClient } from "../../stores/userStore.ts";
+
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const userStore = userStoreClient((state) => state);
 
     return (
         <header className="bg-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-                <Link to="/" className="text-xl font-bold text-blue-600">Librería Relatos de Papel</Link>
+                <Link to="/" className="text-xl font-bold text-blue-600">
+                    Librería Relatos de Papel
+                </Link>
 
-                {/* Hamburger */}
+                {/* Mobile */}
                 <button
                     className="sm:hidden text-gray-700 focus:outline-none"
                     onClick={() => setIsOpen(!isOpen)}
@@ -33,8 +39,22 @@ export default function Header() {
                     <Link to="/contacts" className="block px-4 py-2 text-gray-700 hover:text-blue-600">Contactos</Link>
                 </nav>
 
-                <div className="hidden sm:block text-sm text-gray-600">
-                    Bienvenido, <span className="font-medium text-blue-600">William Zapata</span>
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                    {userStore.user.isLogin ? (
+                        <span className="hidden sm:inline">
+                            Bienvenido, <span className="font-medium text-blue-600">
+                            {userStore.user.name} {userStore.user.surname}
+                        </span>
+                        </span>
+                    ) : (
+                        <Link to="/login" className="flex items-center gap-1 text-gray-600 hover:text-blue-600">
+                            <User className="w-5 h-5"/>
+                            <span className="hidden sm:inline">Iniciar sesión</span>
+                        </Link>
+                    )}
+                    <Link to="/cart" className="text-gray-600 hover:text-blue-600">
+                        <ShoppingCart className="w-5 h-5"/>
+                    </Link>
                 </div>
             </div>
         </header>
