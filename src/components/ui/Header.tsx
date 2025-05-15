@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { User, ShoppingCart } from 'lucide-react';
 import { userStoreClient } from "../../stores/userStore.ts";
 
-
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const userStore = userStoreClient((state) => state);
