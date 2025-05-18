@@ -21,10 +21,9 @@ export default function Books() {
             {filteredBooks.length > 0 ? (
                 <BookGrid books={filteredBooks} title={`Resultados de: ${query}`}/>
             ) : (
-                <div className="flex flex-col items-center justify-center h-screen">
+                <div className="flex items-center justify-center h-screen w-full">
                     <div>
-                        <h1 className="text-2xl font-bold text-gray-800">No se encontraron resultados</h1>
-                        <p className="text-gray-600">Intenta con otra búsqueda.</p>
+                        <h2 className="text-2xl font-bold text-gray-800">No se encontraron resultados</h2>
                     </div>
                 </div>
             )}
