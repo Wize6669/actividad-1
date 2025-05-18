@@ -11,7 +11,7 @@ export default function Header({ onCartClick }: { onCartClick: () => void }) {
   const userStore = userStoreClient((state) => state);
   const navigate = useNavigate();
 
-  const totalItems = useCartStore(state => 
+  const totalItems = useCartStore(state =>
     state.items.reduce((sum, item) => sum + item.quantity, 0)
   );
 
