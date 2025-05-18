@@ -26,11 +26,9 @@ export default function LoginForm() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-
         const matchedUser = usersTable.find(
             (u: User) => u.email.trim().toLowerCase() === user.email.trim().toLowerCase()
         );
-
         if (matchedUser && bcrypt.compareSync(user.password, matchedUser.password)) {
             userStore.login({ ...matchedUser, isLogin: true });
             navigate('/');

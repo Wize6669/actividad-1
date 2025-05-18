@@ -4,12 +4,19 @@ import type { Author } from "./models/Author.ts";
 import type { BookGenre } from "./models/BookGenre.ts";
 import type { Book } from "./models/Book.ts";
 
-const usersTable: User[] = [];
-
 const rolesTable: Role[] = [
     { id: 1, role: "admin" },
     { id: 2, role: "client" },
 ];
+const usersTable: User[] = [{
+    id:1,
+    name:'Kevin antony calderon guabloche',
+    surname:'desconocido',
+    roleId: 2,
+    email:'admin@gmail.com'
+    ,password:'$2b$10$maL48VQ.cMxH3yzMTVihD.v6nPxIrXXVdvdqpxJliRUJ/zG0hUQ8u'
+}];
+
 
 const booksGenreTable: BookGenre[] = [
     { id: 1, name: "Ficción" },
