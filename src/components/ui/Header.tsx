@@ -161,3 +161,4 @@ export default function Header({ onCartClick }: { onCartClick: () => void }) {
         </header>
     );
 }
+
