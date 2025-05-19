@@ -1,5 +1,6 @@
 import { booksTable } from "../db";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import Header from "../components/ui/Header";
 
 export function BookList() {
   return (
@@ -22,6 +23,13 @@ export function BookList() {
           </div>
         ))}
       </div>
+      <div>
+      <Header />
+      <div style={{ padding: "2rem" }}>
+        <h2>Libros disponibles</h2>
+        {/* Lista de libros... */}
+      </div>
+    </div>
     </div>
   );
 }
