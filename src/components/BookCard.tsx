@@ -57,4 +57,3 @@ export default function BookCard({ id, title, imageUrl, price, discount }: Book)
     </div>
   );
 }
-    
