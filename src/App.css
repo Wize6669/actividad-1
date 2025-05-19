@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Satoshi", "sans-serif";
+
+  /* Variables modo claro */
+  --color-bg: white;
+  --color-text: black;
+  --color-primary: #2563eb; /* azul Tailwind */
+  --color-border: #e5e7eb;  /* gray-200 */
+}
+
+/* Modo oscuro */
+.dark {
+  --color-bg: #1a202c;       /* slate-900 */
+  --color-text: #f7fafc;     /* slate-100 */
+  --color-primary: #3b82f6;  /* azul claro */
+  --color-border: #374151;   /* gray-700 */
+}
+
+/* Aplicar variables globales */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Clases para usar las variables de color en elementos */
+.bg-theme {
+  background-color: var(--color-bg);
+}
+
+.text-theme {
+  color: var(--color-text);
+}
+
+.border-theme {
+  border-color: var(--color-border);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.hover-text-primary:hover {
+  color: var(--color-primary);
+}
+
+.hover-bg-primary:hover {
+  background-color: var(--color-primary);
+}
