@@ -16,13 +16,14 @@ const Cart: FC<CartProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="p-4 flex flex-col h-full bg-white shadow rounded-md max-w-sm w-full">
+    <div className="p-4 flex flex-col h-full bg-theme shadow rounded-md max-w-sm w-full text-theme">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Carrito de compras</h2>
         <button
           onClick={onClose}
-          className="text-gray-600 hover:text-gray-900 font-bold text-xl"
+          className="hover:text-primary font-bold text-xl"
           aria-label="Cerrar carrito"
+          style={{ color: "var(--color-text)" }}
         >
           ×
         </button>
@@ -36,7 +37,7 @@ const Cart: FC<CartProps> = ({ onClose }) => {
             {items.map((item: CartItem) => {
               const priceWithDiscount = item.discount ? item.price * (1 - item.discount) : item.price;
               return (
-                <li key={item.id} className="flex justify-between items-center border-b pb-2">
+                <li key={item.id} className="flex justify-between items-center border-b border-theme pb-2">
                   <div>
                     <p className="font-semibold">{item.title}</p>
                     <p className="text-sm text-gray-500">
@@ -45,8 +46,9 @@ const Cart: FC<CartProps> = ({ onClose }) => {
                   </div>
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="text-red-600 hover:text-red-800 font-semibold"
+                    className="hover:text-red-600 font-semibold"
                     aria-label={`Eliminar ${item.title} del carrito`}
+                    style={{ color: "var(--color-primary)" }}
                   >
                     Eliminar
                   </button>
@@ -55,11 +57,11 @@ const Cart: FC<CartProps> = ({ onClose }) => {
             })}
           </ul>
 
-          <div className="mt-4 border-t pt-4">
+          <div className="mt-4 border-t border-theme pt-4">
             <p className="text-lg font-bold">Total: ${totalPrice().toFixed(2)}</p>
             <button
               onClick={handleCheckout}
-              className="mt-3 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+              className="mt-3 w-full bg-primary text-white py-2 rounded hover:bg-primary/80 transition"
             >
               Proceder al pago
             </button>
