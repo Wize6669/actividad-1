@@ -15,7 +15,7 @@ const CartSidebar: FC<CartSidebarProps> = ({ isOpen, onClose }) => {
       onClick={onClose} // click fuera cierra
     >
       <div
-        className="w-80 h-full bg-white shadow-lg p-4"
+        className="w-80 h-full bg-theme shadow-lg p-4 text-theme border-2 border-theme"
         onClick={(e) => e.stopPropagation()} // evita cierre si click dentro
       >
         <Cart onClose={onClose} />
