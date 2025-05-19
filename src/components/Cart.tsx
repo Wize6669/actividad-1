@@ -10,7 +10,7 @@ const Cart: FC<CartProps> = ({ onClose }) => {
   const { items, removeFromCart, clearCart, totalPrice } = useCartStore();
 
   const handleCheckout = () => {
-    alert('Gracias por tu compra! Regrese Pronto');
+    alert('Gracias por tu compra! Regrese pronto');
     clearCart();
     onClose();
   };
@@ -21,9 +21,9 @@ const Cart: FC<CartProps> = ({ onClose }) => {
         <h2 className="text-xl font-bold">Carrito de compras</h2>
         <button
           onClick={onClose}
-          className="hover:text-primary font-bold text-xl"
+          className="font-bold text-xl hover:text-primary"
           aria-label="Cerrar carrito"
-          style={{ color: "var(--color-text)" }}
+          style={{ color: 'var(--color-text)' }}
         >
           ×
         </button>
@@ -35,9 +35,15 @@ const Cart: FC<CartProps> = ({ onClose }) => {
         <>
           <ul className="flex-grow overflow-auto space-y-4">
             {items.map((item: CartItem) => {
-              const priceWithDiscount = item.discount ? item.price * (1 - item.discount) : item.price;
+              const priceWithDiscount = item.discount
+                ? item.price * (1 - item.discount)
+                : item.price;
+
               return (
-                <li key={item.id} className="flex justify-between items-center border-b border-theme pb-2">
+                <li
+                  key={item.id}
+                  className="flex justify-between items-center border-b border-theme pb-2"
+                >
                   <div>
                     <p className="font-semibold">{item.title}</p>
                     <p className="text-sm text-gray-500">
@@ -47,8 +53,8 @@ const Cart: FC<CartProps> = ({ onClose }) => {
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="hover:text-red-600 font-semibold"
+                    style={{ color: 'var(--color-primary)' }}
                     aria-label={`Eliminar ${item.title} del carrito`}
-                    style={{ color: "var(--color-primary)" }}
                   >
                     Eliminar
                   </button>
@@ -58,7 +64,9 @@ const Cart: FC<CartProps> = ({ onClose }) => {
           </ul>
 
           <div className="mt-4 border-t border-theme pt-4">
-            <p className="text-lg font-bold">Total: ${totalPrice().toFixed(2)}</p>
+            <p className="text-lg font-bold">
+              Total: ${totalPrice().toFixed(2)}
+            </p>
             <button
               onClick={handleCheckout}
               className="mt-3 w-full bg-primary text-white py-2 rounded hover:bg-primary/80 transition"
