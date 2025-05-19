@@ -24,7 +24,7 @@ export default function BookCard({ id, title, imageUrl, price, discount }: Book)
                         Agregar al carrito
                     </button>
                     <Link
-                        to={`/books/${id}`}
+                        to={`/book/${id}`}
                         className="w-1/2 bg-gray-200 text-gray-700 text-center py-1 px-2 rounded hover:bg-gray-300 transition text-sm"
                     >
                         Ver más
