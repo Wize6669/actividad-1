@@ -6,6 +6,8 @@ import Home from './pages/Home.tsx';
 import MainLayout from './layouts/MainLayout.tsx';
 import Books from './pages/Books.tsx';
 import { ThemeProvider } from './context/ThemeProvider';
+import BookDetail from "./pages/BookDetail";
+import { BookList } from './pages/BookList.tsx';
 
 function App() {
     return (
@@ -18,6 +20,8 @@ function App() {
                     <Route index element={<Home/>}/>
                     <Route path={"books"} element={<Books/>}/>
                 </Route>
+                <Route path="/" element={<BookList />} />
+                <Route path="/book/:id" element={<BookDetail />} />
             </Routes>
         </ThemeProvider>
     )
