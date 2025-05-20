@@ -24,7 +24,7 @@ export function BookList() {
         ))}
       </div>
       <div>
-      <Header />
+      <Header onCartClick={()=>{console.log('prueba')}} />
       <div style={{ padding: "2rem" }}>
         <h2>Libros disponibles</h2>
         {/* Lista de libros... */}
