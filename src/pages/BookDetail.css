@@ -1,0 +1,106 @@
+/* Modo claro por defecto */
+body.theme--light {
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+body.theme--dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Estructura general */
+.book-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background-color: var(--card-bg);
+}
+
+.book-detail__image {
+  width: 250px;
+  height: 375px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.book-detail__info {
+  flex: 1;
+}
+
+.book-detail__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-detail__authors,
+.book-detail__genres {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.book-detail__description {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.book-detail__price {
+  margin-bottom: 0.5rem;
+}
+
+.book-detail__discount {
+  color: green;
+  margin-bottom: 1rem;
+}
+
+.book-detail__back-button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-detail__back-button:hover {
+  background-color: #0056b3;
+}
+
+.book-detail__not-found {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.book-detail__top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+
+.theme-toggle {
+  padding: 0.4rem 0.8rem;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Variables por tema */
+body.theme--light {
+  --card-bg: #fff;
+  --border-color: #ccc;
+}
+
+body.theme--dark {
+  --card-bg: #1e1e1e;
+  --border-color: #444;
+}
